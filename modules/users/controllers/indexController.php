@@ -5,15 +5,31 @@ function construct() {
 }
 
 function indexAction() {
-    echo "Trang chủ users";
+    if(isset($_POST['btn-update']))
+    {
+        $name =  check_input($_POST['name']);
+        $phone =  check_input($_POST['phone']);
+        $company = check_input($_POST['company']);
+        $role = check_input($_POST['role']);
+        $enquiry = check_input($_POST['enquiry']);
+        
+    }
+    load_view('index');
 }
 
-function registerAction(){
-    if(isset($_POST['btn-reg'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password_confirm = $_POST['confirm-password'];
-        echo($email . '----' . $password . '----' . $password_confirm);
-    }
-    load_view('register');
+function logoutAction(){
+    session_destroy();
+    redirect("?mod=account&action=login");
+}
+
+function contactAction(){
+    load_view('contact');
+}
+
+function check_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }

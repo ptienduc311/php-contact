@@ -11,12 +11,12 @@
  * 
  */
 
-// $config['base_url'] = "http://localhost/Work/contact/";
+$config['base_url'] = "http://localhost/Work/contact/";
 
 
 $config['default_module'] = 'account';
 $config['default_controller'] = 'index';
-$config['default_action'] = 'index';
+$config['default_action'] = 'register';
 
 
 

@@ -7,10 +7,3 @@ function is_login() {
     }
     return false;
 }
-
-function user_login() {
-    if (!empty($_SESSION['username'])) {
-        return $_SESSION['username'];
-    }
-    return false;
-}

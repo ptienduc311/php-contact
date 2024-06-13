@@ -1,5 +1,5 @@
 <?php
-defined('APPPATH') OR exit('Không được quyền truy cập phần này');
+defined('APPPATH') OR exit('You are not authorized to access this section');
 
 /*
 | -------------------------------------------------------------------
@@ -32,7 +32,7 @@ $autoload['lib'] = array();
  */
 
 
-$autoload['helper'] = array('data');
+$autoload['helper'] = array('data', 'url', 'users');
 
 
 
