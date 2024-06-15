@@ -7,8 +7,27 @@ function construct()
     load_model('index');
 }
 
-function indexAction(){
-    global $error, $fullname, $email, $phone, $company, $role, $enquiry, $message;
+function indexAction()
+{
+    global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data;
+    $default_subject = '';
+    if (isset($_GET['contact-to']) && !empty($_GET['contact-to'])) {
+        $key = $_GET['contact-to'];
+        switch ($key) {
+            case 'home':
+                $default_subject = 'Subject to home';
+                break;
+            case 'product':
+                $default_subject = 'Subject to product';
+                break;
+            default:
+                $default_subject = '';
+                break;
+        }
+    } else {
+        $default_subject = '';
+    }
+    $data['default_subject'] = $default_subject;
     if (isset($_POST['send-mail'])) {
         if (isset($_POST['fullname'])) {
             if (empty($_POST['fullname'])) {
@@ -39,11 +58,6 @@ function indexAction(){
                 $error['phone'] = "Phone is required";
             } else {
                 $phone = check_input($_POST['phone']);
-                if (!is_phone($phone)) {
-                    $error['phone'] = "Invalid phone format";
-                } else {
-                    $phone = $phone;
-                }
             }
         }
         if (isset($_POST['company'])) {
@@ -60,11 +74,11 @@ function indexAction(){
                 $role = check_input($_POST["role"]);
             }
         }
-        if (isset($_POST['enquiry'])) {
-            if (empty($_POST["enquiry"])) {
-                $error['enquiry'] = "Enquiry is required";
+        if (isset($_POST['subject'])) {
+            if (empty($_POST["subject"])) {
+                $error['subject'] = "Subject is required";
             } else {
-                $enquiry = check_input($_POST["enquiry"]);
+                $subject = check_input($_POST["subject"]);
             }
         }
         if (isset($_POST['message'])) {
@@ -81,10 +95,83 @@ function indexAction(){
                 'phone' => $phone,
                 'company' => $company,
                 'role' => $role,
-                'enquiry' => $enquiry,
+                'subject' => $subject,
                 'message' => $message
             ];
             db_insert('info_contact', $data);
+            #Send mail to sales@datalynx.com.au
+            $content_sale = '
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Email Contact</title>
+                <style>
+                .container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                .container .title {
+                    text-align: center;
+                    padding: 10px 5px;
+                    border-radius: 5px;
+                    background-color: rgb(255, 0, 0);
+                    color: white;
+                }
+                p {
+                    font-size: 20px;
+                    margin: 0;
+                    padding: 10px 0;
+                    font-weight: bold;
+                    color: rgb(83, 82, 82);
+                }
+                p > span {
+                    font-size: 18px;
+                    color: rgb(218, 7, 7);
+                }
+                .message {
+                    padding: 10px 20px;
+                    border: 1px solid #333;
+                    border-radius: 10px;
+                    min-height: 100px;
+                }
+                p.content-message {
+                    font-size: 18px;
+                    color: #000;
+                }
+                .signature {
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: #000;
+                }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                <h1 class="title">Customer contact</h1>
+                <h2>Contact Info</h2>
+                <p>Customer Name: <span>' . $fullname . '</span></p>
+                <p>Email: <span>' . $email . '</span></p>
+                <p>Phone: <span>' . $phone . '</span></p>
+                <p>Company: <span>' . $company . '</span></p>
+                <p>Role: <span>' . $role . '</span></p>
+                <p>Subject: <span>' . $subject . '</span></p>
+                <h2>Message</h2>
+                <div class="message">
+                    <p class="content-message">
+                    ' . $message . '
+                    </p>
+                </div>
+                <p>Good day!</p>
+                <p class="signature">Datalynx</p>
+                </div>
+            </body>
+            </html>
+            ';
+            send_mail('ptienduc311@gmail.com', '', "Customer contact", $content_sale);
+
+            #Send mail to customer
             $content = '
                 <!DOCTYPE html>
                     <html lang="en">
@@ -127,7 +214,7 @@ function indexAction(){
             $_SESSION['status'] = "Contact sent successfully!";
         }
     }
-    load_view('index');
+    load_view('index', $data);
 }
 
 function check_input($data)

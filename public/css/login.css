@@ -122,6 +122,33 @@ form .button input:hover {
   background: linear-gradient(45deg, rgb(245, 146, 32), rgb(86, 112, 139));
 }
 
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: 1px solid #4caf50;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.progress-bar {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.progress-bar-inner {
+  height: 10px;
+  width: 0%;
+  background-color: #48e905;
+  transition: width 2s linear;
+}
+
 @media (max-width: 584px) {
   .container {
     max-width: 100%;

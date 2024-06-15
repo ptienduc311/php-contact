@@ -16,7 +16,7 @@ textarea {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #fafafa;
   overflow: hidden;
   display: flex;
@@ -233,7 +233,11 @@ textarea.input {
 
 .text {
   color: #333;
-  margin: 1.5rem 0 2rem 0;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.text:last-of-type {
+  margin-bottom: 2rem;
 }
 
 .information {

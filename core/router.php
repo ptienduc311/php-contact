@@ -14,5 +14,5 @@ $action_name = get_action().'Action';
 call_function(array('construct', $action_name));
 
 if (!is_login() && get_module() !='contact' && get_action() != 'login') {
-    redirect('?mod=admin&action=login');
+    redirect('login');
 }

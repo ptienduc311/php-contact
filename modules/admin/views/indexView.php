@@ -16,13 +16,13 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="?mod=admin&action=index">
+				<a href="admin">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="?mod=admin&action=contact">
+				<a href="admin/contact">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Contact</span>
 				</a>
@@ -48,7 +48,7 @@
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="?mod=admin&action=logout" class="logout">
+				<a href="logout" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>

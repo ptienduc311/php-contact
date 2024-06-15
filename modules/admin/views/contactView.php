@@ -8,7 +8,7 @@ $data = getDataContact();
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <base href="<?php echo base_url(); ?>"/>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="public/css/adminhub.css">
 	<title>AdminHub</title>
@@ -22,13 +22,13 @@ $data = getDataContact();
 		</a>
 		<ul class="side-menu top">
 			<li>
-				<a href="?mod=admin&action=index">
+				<a href="admin">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li class="active">
-				<a href="#">
+				<a href="admin/contact">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Contact</span>
 				</a>
@@ -54,7 +54,7 @@ $data = getDataContact();
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="?mod=admin&action=logout" class="logout">
+				<a href="logout" class="logout">
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Logout</span>
 				</a>
@@ -115,7 +115,7 @@ $data = getDataContact();
 									<td width="200"><?php echo $item['email']; ?></td>
 									<td><?php echo $item['phone']; ?></td>
 									<td><?php echo $item['role']; ?></td>
-									<td><?php echo $item['enquiry']; ?></td>
+									<td><?php echo $item['subject']; ?></td>
 									<td width="200"><?php echo $item['message']; ?></td>
 									<td><?php echo $date ?></td>
 								</tr>

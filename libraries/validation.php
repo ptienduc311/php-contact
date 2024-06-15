@@ -33,15 +33,6 @@ function is_name($name)
     return true;
 }
 
-function is_phone($phone)
-{
-    $pattern = "/^[0-9]{10}+$/";
-    if (!preg_match($pattern, $phone, $matches)) {
-        return false;
-    }
-    return true;
-}
-
 function is_username($username)
 {
     $pattern = "/^(?=.*[a-z])[A-Za-z0-9_]{3,255}$/";

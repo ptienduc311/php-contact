@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Allow direct access to files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite rules
+RewriteRule ^contact$ ?mod=contact [L]
+RewriteRule ^contact/(.*)$ ?mod=contact&contact-to=$1 [L]
+RewriteRule ^login$ ?mod=admin&action=login [L]
+RewriteRule ^admin$ ?mod=admin [L]
+RewriteRule ^logout$ ?mod=admin&action=logout [L]
+RewriteRule ^admin/contact$ ?mod=admin&action=contact [L]

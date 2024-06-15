@@ -47,10 +47,7 @@ function loginAction(){
             if (password_verify($password, $hash)) {
                 $_SESSION['is_login'] = true;
                 $_SESSION['username'] = $username;
-                echo "<script>
-                alert('Login success!');
-                window.location.href='?mod=admin&action=index';
-                </script>";
+                $_SESSION['success'] = "Logged in successfully!";
             } else {
                 $error['account'] = "Account does not exist!";
             }
@@ -65,7 +62,7 @@ function contactAction(){
 
 function logoutAction(){
     session_destroy();
-    redirect('?mod=admin&action=login');
+    redirect('login');
 }
 
 function check_input($data)

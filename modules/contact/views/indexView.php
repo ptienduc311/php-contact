@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="<?php echo base_url(); ?>"/>
     <title>Contact Form</title>
     <link rel="stylesheet" href="public/css/contact.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,10 +20,11 @@
             <div class="contact-info">
                 <img src="public/images/logo.png" alt="" class="logo">
                 <p class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                    dolorum adipisci recusandae praesentium dicta!
+                    Don't think twice before writing to use with any ideas or suggestions. 
                 </p>
-
+                <p class="text">
+                    Be it your suggestions, ideas, or even criticism, our inbox is always waiting for your messages, so talk to us like you have today any time and often.
+                </p>
                 <div class="info">
                     <div class="information">
                         <img src="public/images/output-location.png" class="icon" alt="" />
@@ -109,13 +111,13 @@
                         <p class="error"> <?php echo form_error('role'); ?></p>
                     </div>
                     <div class="input-container">
-                        <input type="text" name="enquiry" class="input <?php global $error;
-                                                                        if (!empty($error['enquiry'])) {
+                        <input type="text" name="subject" class="input <?php global $error;
+                                                                        if (!empty($error['subject'])) {
                                                                             echo 'error';
-                                                                        } ?>" value="<?php echo set_value('enquiry'); ?>" />
-                        <label for="">Enquiry</label>
-                        <span>Enquiry</span>
-                        <p class="error"> <?php echo form_error('enquiry'); ?></p>
+                                                                        } ?>" value="<?php echo isset($_POST['subject']) ? set_value('subject') : $default_subject; ?>" />
+                        <label for="">Subject</label>
+                        <span>Subject</span>
+                        <p class="error"> <?php echo form_error('subject'); ?></p>
                     </div>
                     <div class="input-container textarea">
                         <textarea name="message" class="input <?php global $error;
