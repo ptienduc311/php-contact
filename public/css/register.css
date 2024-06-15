@@ -80,7 +80,7 @@ body {
   border: 4px solid #ff0000 !important;
 }
 
-.user-details .input-box p.error{
+.user-details .input-box p.error, form p.error{
   color: red;
   padding: 5px 0;
 }

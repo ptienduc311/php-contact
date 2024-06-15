@@ -18,16 +18,17 @@
  * charset: Mail content character code (UTF-8)
  */
 
-$email = Array(
+ $config['email'] = Array(
     'protocol' => 'smtp',
-    'smtp_host' => 'ssl://smtp.googlemail.com',
+    'smtp_host' => 'smtp.gmail.com',
     'smtp_port' => 465,
-    'smtp_user' => '',
-    'smtp_pass' => '',
+    'smtp_user' => 'binhtonga1@gmail.com',
+    'smtp_fullname'=>'Datalynx',
+    'smtp_pass' => 'tqvgduxbpglpwhse',
+    'stmp_secure'=>'ssl',
     'smtp_timeout' => '7',
     'mailtype' => 'html',
     'charset' => 'UTF-8'
 );
-
 
 

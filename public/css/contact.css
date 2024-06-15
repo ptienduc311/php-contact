@@ -116,9 +116,9 @@ textarea.input {
 
 .input-container label {
   position: absolute;
-  top: 50%;
+  /* top: 40%; */
   left: 15px;
-  transform: translateY(-50%);
+  /* transform: translateY(-50%); */
   padding: 0 0.4rem;
   color: #fafafa;
   font-size: 0.9rem;
@@ -126,11 +126,22 @@ textarea.input {
   pointer-events: none;
   z-index: 1000;
   transition: 0.5s;
+  top: 1rem;
+  transform: translateY(0);
 }
 
 .input-container.textarea label {
   top: 1rem;
   transform: translateY(0);
+}
+
+.list-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-btn a{
+  text-decoration: none;
 }
 
 .btn {
@@ -198,9 +209,17 @@ textarea.input {
   opacity: 1;
 }
 
-.input-container .error {
-  border: 2px solid rgb(226, 8, 8);
-  box-shadow: 1px 1px 2px 4px rgb(226, 8, 8);
+.input-container input.error {
+  border: 4px solid #ff0000 !important;
+}
+
+.input-container textarea.error{
+  border: 4px solid #ff0000 !important;
+}
+
+.input-container p.error{
+  color: red;
+  padding: 5px 0;
 }
 
 .contact-info {
