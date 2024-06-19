@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="<?php echo base_url(); ?>"/>
+    <base href="<?php echo base_url(); ?>" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="public/css/contact.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,9 +18,11 @@
         <img src="public/images/output-shape.png" class="square" alt="" />
         <div class="form">
             <div class="contact-info">
-                <img src="public/images/logo.png" alt="" class="logo">
+                <a href="home">
+                    <img src="public/images/logo.png" alt="" class="logo">
+                </a>
                 <p class="text">
-                    Don't think twice before writing to use with any ideas or suggestions. 
+                    Don't think twice before writing to use with any ideas or suggestions.
                 </p>
                 <p class="text">
                     Be it your suggestions, ideas, or even criticism, our inbox is always waiting for your messages, so talk to us like you have today any time and often.
@@ -28,15 +30,15 @@
                 <div class="info">
                     <div class="information">
                         <img src="public/images/output-location.png" class="icon" alt="" />
-                        <p>92 Cherry Drive Uniondale, NY 11553</p>
+                        <p>Level 30, 100 Miller Street, North Sydney, NSW, 2060</p>
                     </div>
                     <div class="information">
                         <img src="public/images/output-email.png" class="icon" alt="" />
-                        <p>lorem@ipsum.com</p>
+                        <p>sales@datalynx.com.au</p>
                     </div>
                     <div class="information">
-                        <img src="public/images/output-phone.png" class="icon" alt="" />
-                        <p>123-456-789</p>
+                        <img src="public/images/output-email.png" class="icon" alt="" />
+                        <p>support@datalynx.com.au</p>
                     </div>
                 </div>
 
@@ -64,6 +66,9 @@
                 <span class="circle two"></span>
 
                 <form method="POST" autocomplete="off">
+                    <a href="home" class="back-home">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </a>
                     <h3 class="title">Contact us</h3>
                     <div class="input-container">
                         <input type="text" name="fullname" class="input <?php global $error;
@@ -110,7 +115,7 @@
                         <span>Role</span>
                         <p class="error"> <?php echo form_error('role'); ?></p>
                     </div>
-                    <div class="input-container">
+                    <!-- <div class="input-container">
                         <input type="text" name="subject" class="input <?php global $error;
                                                                         if (!empty($error['subject'])) {
                                                                             echo 'error';
@@ -118,7 +123,17 @@
                         <label for="">Subject</label>
                         <span>Subject</span>
                         <p class="error"> <?php echo form_error('subject'); ?></p>
+                    </div> -->
+                    <div class="input-container">
+                        <input type="text" name="subject" class="input <?php global $error;
+                                                                        if (!empty($error['subject'])) {
+                                                                            echo 'error';
+                                                                        } ?>" value="<?php echo isset($_POST['subject']) ? htmlspecialchars($_POST['subject']) : $default_subject; ?>" />
+                        <label for="">Subject</label>
+                        <span>Subject</span>
+                        <p class="error"> <?php echo form_error('subject'); ?></p>
                     </div>
+
                     <div class="input-container textarea">
                         <textarea name="message" class="input <?php global $error;
                                                                 if (!empty($error['message'])) {
@@ -130,6 +145,7 @@
                     </div>
                     <div class="list-btn">
                         <input type="submit" name="send-mail" value="Send" class="btn" />
+                        <a href="home" class="btn btn-back">Back</a>
                     </div>
                 </form>
             </div>
@@ -144,9 +160,14 @@
             Swal.fire({
                 title: "<?php echo $_SESSION['status']; ?>",
                 icon: "success",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "<?php echo $_SESSION['key']; ?>";
+                }
             });
         <?php
             unset($_SESSION['status']);
+            unset($_SESSION['key']);
         }
         ?>
     </script>

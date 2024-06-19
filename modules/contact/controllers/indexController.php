@@ -9,23 +9,22 @@ function construct()
 
 function indexAction()
 {
-    global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data;
+    global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data, $key;
     $default_subject = '';
+    $key = 'contact';
     if (isset($_GET['contact-to']) && !empty($_GET['contact-to'])) {
         $key = $_GET['contact-to'];
         switch ($key) {
-            case 'home':
-                $default_subject = 'Subject to home';
-                break;
             case 'product':
-                $default_subject = 'Subject to product';
+                $default_subject = 'Product enquiry';
+                break;
+            case 'services':
+                $default_subject = 'Services enquiry';
                 break;
             default:
                 $default_subject = '';
                 break;
         }
-    } else {
-        $default_subject = '';
     }
     $data['default_subject'] = $default_subject;
     if (isset($_POST['send-mail'])) {
@@ -35,7 +34,7 @@ function indexAction()
             } else {
                 $fullname = check_input($_POST['fullname']);
                 if (!is_name($fullname)) {
-                    $error['name'] = "Your name must contain only uppercase and lowercase letters!";
+                    $error['name'] = "Your name must start with an uppercase letter and contain only uppercase, lowercase letters, and spaces!";
                 } else {
                     $fullname = $fullname;
                 }
@@ -169,7 +168,7 @@ function indexAction()
             </body>
             </html>
             ';
-            send_mail('ptienduc311@gmail.com', '', "Customer contact", $content_sale);
+            send_mail('sales@datalynx.com.au', '', "Customer contact", $content_sale);
 
             #Send mail to customer
             $content = '
@@ -211,7 +210,17 @@ function indexAction()
                     </html>
             ';
             send_mail($email, '', "Thank you for contacting", $content);
+
+            $fullname = '';
+            $email = '';
+            $phone = '';
+            $company = '';
+            $role = '';
+            $subject = '';
+            $message = '';
+
             $_SESSION['status'] = "Contact sent successfully!";
+            $_SESSION['key'] = $key;
         }
     }
     load_view('index', $data);

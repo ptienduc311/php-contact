@@ -29,6 +29,7 @@ li {
   --light-yellow: #fff2c6;
   --orange: #fd7238;
   --light-orange: #ffe0d3;
+  --dark-blue: rgb(10, 10, 183);
 }
 
 html {
@@ -326,6 +327,31 @@ body {
 #content main .table-data .order table tbody tr:hover {
   background: var(--grey);
 }
+
+#content main .head-title .right form {
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+}
+#content main .head-title .right form input[type="date"] {
+  padding: 8px;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+}
+#content main .head-title .right form button {
+  padding: 8px 16px;
+  border: none;
+  background-color: var(--blue);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#content main .head-title .right form button:hover {
+  background-color: var(--dark-blue);
+}
+
+
+
 @media screen and (max-width: 768px) {
   #sidebar {
     width: 200px;

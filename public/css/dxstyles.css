@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+.logo-box {
+}
+.logo-box {
+}
+.menu-box {
+}
+.mynavbar {
+}
+
+#bgimage-top{
+    background-image: url('"../images/main-cloud.webp"');
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}

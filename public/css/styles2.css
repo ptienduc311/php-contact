@@ -1,0 +1,15 @@
+.tooltip {
+  font-family: Poppins, Sans-Serif;
+  font-size:18px;
+  color:rgba(255,55,255,1.00);
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  display: none;
+}
+
+.tooltip p {
+  margin: 0; /* Remove default paragraph margins */
+

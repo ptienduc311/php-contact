@@ -41,6 +41,20 @@ textarea {
   position: relative;
 }
 
+.contact-form a.back-home{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-form a.back-home:hover{
+  color: #474644;
+  cursor: pointer;
+}
+
 .circle {
   border-radius: 50%;
   background: linear-gradient(135deg, transparent 20%, rgb(183, 81, 3));
@@ -138,10 +152,16 @@ textarea.input {
 .list-btn{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.list-btn a{
+.list-btn a.btn-back{
+  display: none;
   text-decoration: none;
+}
+
+.list-btn .btn-back:hover{
+  background-color: rgb(86, 112, 139);
 }
 
 .btn {
@@ -355,6 +375,14 @@ textarea.input {
     top: -13px;
     left: initial;
     right: 70px;
+  }
+
+  .contact-form a.back-home{
+    display: none;
+  }
+
+  .list-btn a.btn-back{
+    display: block;
   }
 
   .square {

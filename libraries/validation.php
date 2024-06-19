@@ -26,8 +26,8 @@ function is_email($email)
 
 function is_name($name)
 {
-    $pattern = "/^[A-Za-z]{1,255}$/";
-    if (!preg_match($pattern, $name, $matches)) {
+    $pattern = "/^[A-Z][a-zA-Z ]{0,254}$/";
+    if (!preg_match($pattern, $name)) {
         return false;
     }
     return true;

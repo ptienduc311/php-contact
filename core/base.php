@@ -24,6 +24,11 @@ function get_action() {
     return $action;
 }
 
+function get_subject() {
+    global $config;
+    $action = isset($_GET['subject']) ? $_GET['subject'] : '';
+    return $action;
+}
 /*
  * -------------------------------
  * Load

@@ -77,7 +77,7 @@
                 }, 10);
 
                 setTimeout(() => {
-                    window.location.href = "admin";
+                    window.location.href = "admin/contact";
                 }, 2250);
                 <?php unset($_SESSION['success']); ?>
             <?php } ?>
