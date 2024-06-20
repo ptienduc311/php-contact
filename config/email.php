@@ -22,13 +22,14 @@
     'protocol' => 'smtp',
     'smtp_host' => 'smtp.gmail.com',
     'smtp_port' => 465,
-    'smtp_user' => 'binhtonga1@gmail.com',
+    'smtp_user' => '',
     'smtp_fullname'=>'Datalynx',
-    'smtp_pass' => 'tqvgduxbpglpwhse',
+    'smtp_pass' => '',
     'stmp_secure'=>'ssl',
     'smtp_timeout' => '7',
     'mailtype' => 'html',
     'charset' => 'UTF-8'
 );
 
+?>
 

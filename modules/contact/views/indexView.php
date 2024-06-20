@@ -1,3 +1,15 @@
+<?php
+function openContactForm($stringvar)
+{
+    echo '<div class="input-container">';
+    echo '<input type="text" name="subject" class="input" value="' . htmlspecialchars($stringvar) . '" />';
+    echo '<label for="subject">Subject:</label><br>';
+    echo '<span>Subject</span>';
+    echo '</div>';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,24 +127,25 @@
                         <span>Role</span>
                         <p class="error"> <?php echo form_error('role'); ?></p>
                     </div>
-                    <!-- <div class="input-container">
-                        <input type="text" name="subject" class="input <?php global $error;
-                                                                        if (!empty($error['subject'])) {
-                                                                            echo 'error';
-                                                                        } ?>" value="<?php echo isset($_POST['subject']) ? set_value('subject') : $default_subject; ?>" />
-                        <label for="">Subject</label>
-                        <span>Subject</span>
-                        <p class="error"> <?php echo form_error('subject'); ?></p>
-                    </div> -->
-                    <div class="input-container">
-                        <input type="text" name="subject" class="input <?php global $error;
-                                                                        if (!empty($error['subject'])) {
-                                                                            echo 'error';
-                                                                        } ?>" value="<?php echo isset($_POST['subject']) ? htmlspecialchars($_POST['subject']) : $default_subject; ?>" />
-                        <label for="">Subject</label>
-                        <span>Subject</span>
-                        <p class="error"> <?php echo form_error('subject'); ?></p>
-                    </div>
+                    <?php
+                    if(isset($_POST['button'])){
+                        $stringvar = $_POST['button'];
+                        openContactForm($stringvar);
+                    }
+                    else{
+                    ?>
+                        <div class="input-container">
+                            <input type="text" name="subject" class="input <?php global $error;
+                                                                            if (!empty($error['subject'])) {
+                                                                                echo 'error';
+                                                                            } ?>" value="<?php echo isset($_POST['subject']) ? htmlspecialchars($_POST['subject']) : ''; ?>" />
+                            <label for="">Subject</label>
+                            <span>Subject</span>
+                            <p class="error"> <?php echo form_error('subject'); ?></p>
+                        </div>
+                    <?php
+                    }
+                    ?>
 
                     <div class="input-container textarea">
                         <textarea name="message" class="input <?php global $error;

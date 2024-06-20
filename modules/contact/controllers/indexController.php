@@ -9,24 +9,19 @@ function construct()
 
 function indexAction()
 {
-    global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data, $key;
-    $default_subject = '';
-    $key = 'contact';
-    if (isset($_GET['contact-to']) && !empty($_GET['contact-to'])) {
-        $key = $_GET['contact-to'];
-        switch ($key) {
-            case 'product':
-                $default_subject = 'Product enquiry';
-                break;
-            case 'services':
-                $default_subject = 'Services enquiry';
-                break;
-            default:
-                $default_subject = '';
-                break;
-        }
+    global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data;
+    if (!isset($_SESSION['key'])) {
+        $_SESSION['key'] = 'contact';
     }
-    $data['default_subject'] = $default_subject;
+    if (isset($_POST['product-to-contact'])) {
+        $_SESSION['key'] = "home";
+        // $_SESSION['key'] = "product";
+    }
+    if (isset($_POST['services-to-contact'])) {
+        $_SESSION['key'] = "home";
+        // $_SESSION['key'] = "services";
+    }
+
     if (isset($_POST['send-mail'])) {
         if (isset($_POST['fullname'])) {
             if (empty($_POST['fullname'])) {
@@ -52,41 +47,11 @@ function indexAction()
                 }
             }
         }
-        if (isset($_POST['phone'])) {
-            if (empty($_POST["phone"])) {
-                $error['phone'] = "Phone is required";
-            } else {
-                $phone = check_input($_POST['phone']);
-            }
-        }
-        if (isset($_POST['company'])) {
-            if (empty($_POST["company"])) {
-                $error['company'] = "Company is required";
-            } else {
-                $company = check_input($_POST["company"]);
-            }
-        }
-        if (isset($_POST['role'])) {
-            if (empty($_POST["role"])) {
-                $error['role'] = "Role is required";
-            } else {
-                $role = check_input($_POST["role"]);
-            }
-        }
-        if (isset($_POST['subject'])) {
-            if (empty($_POST["subject"])) {
-                $error['subject'] = "Subject is required";
-            } else {
-                $subject = check_input($_POST["subject"]);
-            }
-        }
-        if (isset($_POST['message'])) {
-            if (empty($_POST["message"])) {
-                $error['message'] = "Message is required";
-            } else {
-                $message = check_input($_POST["message"]);
-            }
-        }
+        $phone = check_input($_POST['phone']);
+        $company = check_input($_POST["company"]);
+        $role = check_input($_POST["role"]);
+        $subject = check_input($_POST["subject"]);
+        $message = check_input($_POST["message"]);
         if (empty($error)) {
             $data = [
                 'name' => $fullname,
@@ -98,6 +63,7 @@ function indexAction()
                 'message' => $message
             ];
             db_insert('info_contact', $data);
+
             #Send mail to sales@datalynx.com.au
             $content_sale = '
             <!DOCTYPE html>
@@ -220,7 +186,7 @@ function indexAction()
             $message = '';
 
             $_SESSION['status'] = "Contact sent successfully!";
-            $_SESSION['key'] = $key;
+            // $_SESSION['key'] = $key;
         }
     }
     load_view('index', $data);

@@ -28,7 +28,7 @@ function send_mail($sent_to_email, $sent_to_fullname, $subject, $content, $optio
         $mail->SMTPAuth = true;                                   //Enable SMTP authentication
         $mail->Username = $config_email['smtp_user'];                     //SMTP username
         $mail->Password = $config_email['smtp_pass'];                               //SMTP password
-        $mail->SMTPSecure = 'ssl';            //Enable implicit TLS encryption
+        $mail->SMTPSecure = $config_email['stmp_secure'];            //Enable implicit TLS encryption
         $mail->Port = $config_email['smtp_port'];                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->CharSet = "UTF-8";
         

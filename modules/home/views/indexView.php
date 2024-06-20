@@ -7,13 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <base href="<?php echo base_url(); ?>" />
   <title>DataLynx</title>
-  <!-- Bootstrap -->
   <link href="public/css/bootstrap-4.4.1.css" rel="stylesheet" />
   <link href="public/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <!-- body code goes here -->
   <div class="container">
     <H1OrDk>Hello and Welcome to Datalynx test sub-domain</H1OrDk>
     <br/><br/>
@@ -33,25 +31,26 @@
     </a>
     <br/><br/>
 
-    <a href="contact/product-enquiry">
-      <button type="button" class="btn tools-btn-sm">Product</button>
-    </a>
-    <br/><br/>
-
-    <a href="contact/services-enquiry">
-      <button type="button" class="btn tools-btn-sm">Services</button>
-    </a>
-    <br/><br/>
-
     <a href="#">
       <button type="button" class="btn tools-btn-sm">About</button>
     </a>
+
+    <br><br>
+    <H1OrDk>Redirect to contact</H1OrDk>
+    <br>
+    <form action="contact" method="post">
+      <button type="submit" name="button" value="Product to contact" class="btn tools-btn-sm" style="height: auto;">Product to contact</button>
+      <br/><br/>
+
+      <button type="submit" name="button" value="Services to contact" class="btn tools-btn-sm" style="height: auto;">Services to contact</button>
+    </form>
+
+    
+    <br/><br/>
   </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="public/js/jquery-3.4.1.min.js"></script>
 
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="public/js/popper.min.js"></script>
   <script src="public/js/bootstrap-4.4.1.js"></script>
 </body>
