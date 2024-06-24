@@ -96,4 +96,45 @@ function load_model($name) {
         echo "Not found {$path}";
     }
 }
+
+function get_header($name = '') {
+    global $data;
+    if (empty($name)) {
+        $name = 'header';
+    } else {
+        $name = "header-{$name}";
+    }
+    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . $name . '.php';
+    if (file_exists($path)) {
+        if (is_array($data)) {
+            foreach ($data as $key => $a) {
+                $$key = $a;
+            }
+        }
+        require $path;
+    } else {
+        echo "Not found {$path}";
+    }
+}
+
+function get_footer($name = '') {
+    global $data;
+    if (empty($name)) {
+        $name = 'footer';
+    } else {
+        $name = "footer-{$name}";
+    }
+    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . $name . '.php';
+    if (file_exists($path)) {
+        if (is_array($data)) {
+            foreach ($data as $key => $a) {
+                $$key = $a;
+            }
+        }
+        require $path;
+    } else {
+        echo "Not found {$path}";
+    }
+}
+
 ?>

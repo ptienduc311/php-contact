@@ -78,7 +78,8 @@ function openContactForm($stringvar)
                 <span class="circle two"></span>
 
                 <form method="POST" autocomplete="off">
-                    <a href="home" class="back-home">
+                    <!-- <a href="javascript:history.go(-1)" class="back-home"></a> -->
+                    <a href="<?php echo $_SESSION['previous_page']; ?>" class="back-home">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </a>
                     <h3 class="title">Contact us</h3>
@@ -175,12 +176,12 @@ function openContactForm($stringvar)
                 icon: "success",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "<?php echo $_SESSION['key']; ?>";
+                    window.location.href = "<?php echo $_SESSION['previous_page']; ?>";
                 }
             });
         <?php
             unset($_SESSION['status']);
-            unset($_SESSION['key']);
+            unset($_SESSION['previous_page']);
         }
         ?>
     </script>

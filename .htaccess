@@ -6,8 +6,29 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite rules
 RewriteRule ^home$ ?mod=home [L]
+RewriteRule ^about$ ?mod=home&action=about [L]
+RewriteRule ^dataserv$ ?mod=home&action=dataserv [L]
+RewriteRule ^optimise$ ?mod=home&action=optimise [L]
+
 RewriteRule ^contact$ ?mod=contact [L]
-RewriteRule ^contact/(.*)-enquiry$ ?mod=contact&contact-to=$1 [L]
+
+RewriteRule ^dxaws$ ?mod=partners&action=dxaws [L]
+RewriteRule ^dxazure$ ?mod=partners&action=dxazure [L]
+RewriteRule ^dxoci$ ?mod=partners&action=dxoci [L]
+RewriteRule ^partner$ ?mod=partners&action=partner [L]
+RewriteRule ^partserv$ ?mod=partners&action=partserv [L]
+RewriteRule ^parttech$ ?mod=partners&action=parttech [L]
+RewriteRule ^dxgcp$ ?mod=partners&action=dxgcp [L]
+
+RewriteRule ^products$ ?mod=products [L]
+RewriteRule ^xchange$ ?mod=products&action=xchange [L]
+RewriteRule ^xplore$ ?mod=products&action=xplore [L]
+
+RewriteRule ^solutions$ ?mod=solutions [L]
+RewriteRule ^cramp$ ?mod=solutions&action=cramp [L]
+RewriteRule ^dms2$ ?mod=solutions&action=dms2 [L]
+RewriteRule ^frs$ ?mod=solutions&action=frs [L]
+RewriteRule ^legmod$ ?mod=solutions&action=legmod [L]
 
 RewriteRule ^login$ ?mod=admin&action=login [L]
 RewriteRule ^logout$ ?mod=admin&action=logout [L]

@@ -10,17 +10,6 @@ function construct()
 function indexAction()
 {
     global $error, $fullname, $email, $phone, $company, $role, $subject, $message, $data;
-    if (!isset($_SESSION['key'])) {
-        $_SESSION['key'] = 'contact';
-    }
-    if (isset($_POST['product-to-contact'])) {
-        $_SESSION['key'] = "home";
-        // $_SESSION['key'] = "product";
-    }
-    if (isset($_POST['services-to-contact'])) {
-        $_SESSION['key'] = "home";
-        // $_SESSION['key'] = "services";
-    }
 
     if (isset($_POST['send-mail'])) {
         if (isset($_POST['fullname'])) {
@@ -134,8 +123,8 @@ function indexAction()
             </body>
             </html>
             ';
-            send_mail('sales@datalynx.com.au', '', "Customer contact", $content_sale);
-
+            send_mail('ptienduc311@gmail.com', '', "Customer contact", $content_sale);
+            // sales@datalynx.com.au
             #Send mail to customer
             $content = '
                 <!DOCTYPE html>
@@ -186,7 +175,6 @@ function indexAction()
             $message = '';
 
             $_SESSION['status'] = "Contact sent successfully!";
-            // $_SESSION['key'] = $key;
         }
     }
     load_view('index', $data);
